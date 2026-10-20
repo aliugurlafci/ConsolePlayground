@@ -1,0 +1,88 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net10.0;net8.0;net5.0;net48</TargetFrameworks>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <AnalysisLevel>latest</AnalysisLevel>
+    <AssemblyName>LibPlayground</AssemblyName>
+    <RootNamespace>CSPLibraries</RootNamespace>
+    <Deterministic>true</Deterministic>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <ContinuousIntegrationBuild Condition="'$(CI)' == 'true' or '$(TF_BUILD)' == 'true' or '$(GITHUB_ACTIONS)' == 'true'">true</ContinuousIntegrationBuild>
+  </PropertyGroup>
+
+  <!-- net5.0 desteği sona ermiş bir hedeftir; bağımlılıkların netstandard varlıkları bu hedefte bilinçli olarak kullanılır. -->
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net5.0'">
+    <CheckEolTargetFramework>false</CheckEolTargetFramework>
+    <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings>
+  </PropertyGroup>
+
+  <!-- .NET Framework BCL'i nullable açıklamaları içermez; null akış denetimi diğer hedeflerin derlemesinde yapılır. -->
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net48'">
+    <Nullable>annotations</Nullable>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <IsPackable>true</IsPackable>
+    <PackageId>LibPlayground</PackageId>
+    <Version>1.0.1</Version>
+    <Authors>LibPlayground</Authors>
+    <Copyright>Copyright (c) 2026 AULA LibPlayground</Copyright>
+    <Description>SAP OData, REST, Excel (okuma/yazma), veritabanı (ADO.NET, SqlBulkCopy), e-posta (SMTP/IMAP), loglama, güvenlik (AES-GCM, JWT, TOTP), serileştirme (CSV, sabit uzunluk, JSON, XML), dosya sistemi, tarih/tatil, metin ve koleksiyon servisleri içeren, birbirinden bağımsız ve yüksek performanslı .NET kütüphanesi. .NET Framework 4.8, .NET 5, .NET 8 ve .NET 10 hedeflerini destekler. Türkçe kültür, TCKN/VKN/IBAN ve Türkiye resmi tatilleri desteklenir.</Description>
+    <PackageTags>sap;odata;rest;httpclient;excel;xlsx;csv;fixed-width;sqlbulkcopy;ado.net;database;logging;smtp;imap;mailkit;jwt;totp;aes-gcm;turkish;tckn;iban</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <EnablePackageValidation>true</EnablePackageValidation>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ExcelDataReader" Version="3.9.0" />
+    <PackageReference Include="ExcelDataReader.DataSet" Version="3.9.0" />
+    <PackageReference Include="MailKit" Version="4.18.1" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="7.1.1" Condition="'$(TargetFramework)' != 'net5.0'" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.12" />
+    <PackageReference Include="Sylvan.Data.Excel" Version="0.5.8" />
+  </ItemGroup>
+
+  <!-- Microsoft.Data.SqlClient 6.0 ve sonrası net5.0 için çalışma zamanı uygulaması içermez (7.x'teki netstandard2.0
+       derlemesi yalnızca bir saplamadır); bu hedefte 5.2.x kullanılır. -->
+  <ItemGroup Condition="'$(TargetFramework)' == 'net5.0'">
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.3" />
+  </ItemGroup>
+
+  <!-- net10.0 dışındaki hedefler: System.IO.Pipelines, Base64Url, Index/Range ve güncel System.Text.Json kutudan gelmez. -->
+  <ItemGroup Condition="'$(TargetFramework)' != 'net10.0'">
+    <PackageReference Include="Microsoft.Bcl.Memory" Version="10.0.12" />
+    <PackageReference Include="System.IO.Pipelines" Version="10.0.12" />
+    <PackageReference Include="System.Text.Json" Version="10.0.12" />
+  </ItemGroup>
+
+  <!-- net5.0 ve net48: DateOnly/TimeOnly, TimeProvider, Frozen koleksiyonlar ve güncel System.Threading.Channels kutudan gelmez. -->
+  <ItemGroup Condition="'$(TargetFramework)' == 'net5.0' or '$(TargetFramework)' == 'net48'">
+    <PackageReference Include="Microsoft.Bcl.TimeProvider" Version="10.0.12" />
+    <PackageReference Include="Portable.System.DateTimeOnly" Version="9.0.2" />
+    <PackageReference Include="System.Collections.Immutable" Version="10.0.12" />
+    <PackageReference Include="System.Threading.Channels" Version="10.0.12" />
+  </ItemGroup>
+
+  <!-- net48: async arayüzler, AES-GCM ve çerçeve derlemeleri. -->
+  <ItemGroup Condition="'$(TargetFramework)' == 'net48'">
+    <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="10.0.12" />
+    <PackageReference Include="Microsoft.Bcl.Cryptography" Version="10.0.12" />
+    <PackageReference Include="System.Memory" Version="4.6.3" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Net.Http" />
+    <Using Include="System.Net.Http" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+</Project>
