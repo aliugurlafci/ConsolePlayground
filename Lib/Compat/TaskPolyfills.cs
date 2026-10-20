@@ -1,7 +1,4 @@
-﻿// Görev yardımcıları: ValueTask statikleri ve TaskCompletionSource (.NET 5), Task.WaitAsync (.NET 6),
-// CancellationTokenSource.CancelAsync (.NET 8).
-
-#if !NET8_0_OR_GREATER
+﻿#if !NET8_0_OR_GREATER
 namespace System.Threading.Tasks
 {
     internal static class TaskPolyfills

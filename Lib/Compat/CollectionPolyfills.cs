@@ -1,7 +1,4 @@
-﻿// Koleksiyon yardımcıları: Enumerable.Chunk ve PriorityQueue (.NET 6), Enumerable.Order (.NET 7);
-// net48 için KeyValuePair.Deconstruct, Dictionary/Queue Try* metotları ve ReferenceEqualityComparer.
-
-#if !NET7_0_OR_GREATER
+﻿#if !NET7_0_OR_GREATER
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 

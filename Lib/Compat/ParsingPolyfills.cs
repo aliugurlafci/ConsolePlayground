@@ -1,7 +1,4 @@
-﻿// Span tabanlı ayrıştırma ve biçimlendirme (net48: .NET Core 2.1 API'leri) ile Enum span aşırı yüklemeleri (.NET 6).
-// Statik extension üyeleri içeren sınıfta aynı imzalı üyeler çakıştığı için her tip ayrı sınıftadır.
-
-#if !NET6_0_OR_GREATER
+﻿#if !NET6_0_OR_GREATER
 using System.Globalization;
 
 namespace System

@@ -1,7 +1,4 @@
-﻿// System.Text.Json'ın netstandard2.0 derlemesi DateOnly/TimeOnly'yi tanımaz; net48 ve net5.0'da
-// .NET 6+ ile aynı biçimi ("yyyy-MM-dd" ve "HH:mm:ss[.fffffff]") kullanan dönüştürücüler.
-
-#if !NET6_0_OR_GREATER
+﻿#if !NET6_0_OR_GREATER
 using System.Globalization;
 
 namespace System.Text.Json.Serialization;

@@ -1,7 +1,4 @@
-﻿// Argüman doğrulama yardımcıları: ThrowIfNull (.NET 6), ThrowIfNullOrEmpty / ObjectDisposedException.ThrowIf (.NET 7),
-// ThrowIfNullOrWhiteSpace ve ArgumentOutOfRangeException.ThrowIf* (.NET 8).
-
-#if !NET8_0_OR_GREATER
+﻿#if !NET8_0_OR_GREATER
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 

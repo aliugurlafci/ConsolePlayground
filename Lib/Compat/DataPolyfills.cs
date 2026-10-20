@@ -1,7 +1,4 @@
-﻿// ADO.NET async yardımcıları: .NET Framework'te DbConnection/DbCommand/DbDataReader/DbTransaction
-// IAsyncDisposable değildir ve transaction async API'leri yoktur; senkron karşılıklarına yönlendirilir.
-
-#if NETFRAMEWORK
+﻿#if NETFRAMEWORK
 using System.Data;
 using System.IO;
 

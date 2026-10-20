@@ -1,6 +1,4 @@
-﻿// SearchValues<char> .NET 8 ile geldi; net48 ve net5.0 için ASCII bit tablosu kullanan bir karşılık.
-
-#if !NET8_0_OR_GREATER
+﻿#if !NET8_0_OR_GREATER
 namespace System.Buffers
 {
     internal static class SearchValues

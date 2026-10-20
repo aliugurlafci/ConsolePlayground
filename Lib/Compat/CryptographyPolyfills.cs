@@ -1,9 +1,4 @@
-﻿// Kriptografi yardımcıları: HashSizeInBytes, HMAC*.HashData, Rfc2898DeriveBytes.Pbkdf2 ve
-// RandomNumberGenerator.GetBytes(int) (.NET 6); GetString/GetItems/Shuffle (.NET 8);
-// net48 için CryptographicOperations, SHA*.HashData ve RandomNumberGenerator.Fill/GetInt32.
-// Statik extension üyeleri içeren sınıfta aynı imzalı üyeler çakıştığı için her tip ayrı sınıftadır.
-
-#if !NET8_0_OR_GREATER
+﻿#if !NET8_0_OR_GREATER
 using System.Buffers.Binary;
 using System.Runtime.CompilerServices;
 

@@ -1,7 +1,4 @@
-﻿// Span yardımcıları: IndexOfAny*InRange / Count (.NET 8), IndexOfAnyExcept (.NET 7),
-// net48 için Contains(T) ve Encoding/TextWriter span aşırı yüklemeleri.
-
-#if !NET8_0_OR_GREATER
+﻿#if !NET8_0_OR_GREATER
 using System.Buffers;
 using System.Runtime.InteropServices;
 using System.Text;

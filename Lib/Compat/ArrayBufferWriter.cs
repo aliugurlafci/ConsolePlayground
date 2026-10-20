@@ -1,7 +1,4 @@
-﻿// ArrayBufferWriter<T> .NET Core 3.0 ile geldi; net48 için aynı davranışta bir karşılık.
-// ResetWrittenCount .NET 8 ile geldi; net5.0'da Clear ile aynı sonucu verir.
-
-#if !NETCOREAPP3_0_OR_GREATER
+﻿#if !NETCOREAPP3_0_OR_GREATER
 namespace System.Buffers;
 
 internal sealed class ArrayBufferWriter<T> : IBufferWriter<T>

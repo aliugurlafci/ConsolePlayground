@@ -1,6 +1,4 @@
-﻿// HttpClient yardımcıları: .NET Framework'te iptal belirteci alan HttpContent okuma metotları ve HttpMethod.Patch yoktur.
-
-#if NETFRAMEWORK
+﻿#if NETFRAMEWORK
 namespace System.Net.Http;
 
 internal static class HttpPolyfills

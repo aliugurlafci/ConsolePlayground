@@ -1,7 +1,4 @@
-﻿// Çeşitli yardımcılar: Random.Shared (.NET 6), Stopwatch.GetElapsedTime (.NET 7), Guid.CreateVersion7 (.NET 9);
-// net48 için Math.Clamp, Array.Fill, MailAddress.TryCreate ve ISOWeek.
-
-#if !NET9_0_OR_GREATER
+﻿#if !NET9_0_OR_GREATER
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Net.Mail;

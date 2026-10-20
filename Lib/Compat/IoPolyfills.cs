@@ -1,7 +1,4 @@
-﻿// Akış ve dosya sistemi yardımcıları: Stream.ReadAtLeast* (.NET 7), ZipFile async (.NET 10);
-// net48 için Memory/Span tabanlı Stream API'leri, File.Move(overwrite), Path.GetRelativePath ve zip çıkarma (overwrite).
-
-#if !NET10_0_OR_GREATER
+﻿#if !NET10_0_OR_GREATER
 using System.IO.Compression;
 #if NETFRAMEWORK
 using System.Buffers;

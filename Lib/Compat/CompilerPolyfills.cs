@@ -1,7 +1,4 @@
-﻿// Eski hedef çerçevelerde (net48, net5.0) derleyicinin ihtiyaç duyduğu tipler.
-// Tipler internal'dır; derleyici bunları adlarıyla tanır, kütüphane dışına sızmazlar.
-
-#if !NET5_0_OR_GREATER
+﻿#if !NET5_0_OR_GREATER
 namespace System.Runtime.CompilerServices
 {
     internal static class IsExternalInit

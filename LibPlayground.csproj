@@ -13,13 +13,11 @@
     <ContinuousIntegrationBuild Condition="'$(CI)' == 'true' or '$(TF_BUILD)' == 'true' or '$(GITHUB_ACTIONS)' == 'true'">true</ContinuousIntegrationBuild>
   </PropertyGroup>
 
-  <!-- net5.0 desteği sona ermiş bir hedeftir; bağımlılıkların netstandard varlıkları bu hedefte bilinçli olarak kullanılır. -->
   <PropertyGroup Condition="'$(TargetFramework)' == 'net5.0'">
     <CheckEolTargetFramework>false</CheckEolTargetFramework>
     <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings>
   </PropertyGroup>
 
-  <!-- .NET Framework BCL'i nullable açıklamaları içermez; null akış denetimi diğer hedeflerin derlemesinde yapılır. -->
   <PropertyGroup Condition="'$(TargetFramework)' == 'net48'">
     <Nullable>annotations</Nullable>
   </PropertyGroup>
@@ -49,20 +47,16 @@
     <PackageReference Include="Sylvan.Data.Excel" Version="0.5.8" />
   </ItemGroup>
 
-  <!-- Microsoft.Data.SqlClient 6.0 ve sonrası net5.0 için çalışma zamanı uygulaması içermez (7.x'teki netstandard2.0
-       derlemesi yalnızca bir saplamadır); bu hedefte 5.2.x kullanılır. -->
   <ItemGroup Condition="'$(TargetFramework)' == 'net5.0'">
     <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.3" />
   </ItemGroup>
 
-  <!-- net10.0 dışındaki hedefler: System.IO.Pipelines, Base64Url, Index/Range ve güncel System.Text.Json kutudan gelmez. -->
   <ItemGroup Condition="'$(TargetFramework)' != 'net10.0'">
     <PackageReference Include="Microsoft.Bcl.Memory" Version="10.0.12" />
     <PackageReference Include="System.IO.Pipelines" Version="10.0.12" />
     <PackageReference Include="System.Text.Json" Version="10.0.12" />
   </ItemGroup>
 
-  <!-- net5.0 ve net48: DateOnly/TimeOnly, TimeProvider, Frozen koleksiyonlar ve güncel System.Threading.Channels kutudan gelmez. -->
   <ItemGroup Condition="'$(TargetFramework)' == 'net5.0' or '$(TargetFramework)' == 'net48'">
     <PackageReference Include="Microsoft.Bcl.TimeProvider" Version="10.0.12" />
     <PackageReference Include="Portable.System.DateTimeOnly" Version="9.0.2" />
@@ -70,7 +64,6 @@
     <PackageReference Include="System.Threading.Channels" Version="10.0.12" />
   </ItemGroup>
 
-  <!-- net48: async arayüzler, AES-GCM ve çerçeve derlemeleri. -->
   <ItemGroup Condition="'$(TargetFramework)' == 'net48'">
     <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="10.0.12" />
     <PackageReference Include="Microsoft.Bcl.Cryptography" Version="10.0.12" />

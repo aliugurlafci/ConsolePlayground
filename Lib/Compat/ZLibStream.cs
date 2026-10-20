@@ -1,7 +1,4 @@
-﻿// ZLibStream .NET 6 ile geldi; net48 ve net5.0 için RFC 1950 çerçevesini (başlık + deflate + Adler-32)
-// DeflateStream üzerine kuran bir karşılık. Açarken Adler-32 sağlaması doğrulanmaz.
-
-#if !NET6_0_OR_GREATER
+﻿#if !NET6_0_OR_GREATER
 namespace System.IO.Compression;
 
 internal sealed class ZLibStream : Stream

@@ -1,7 +1,4 @@
-﻿// Metin yardımcıları: string/char/StringBuilder üzerindeki span ve karakter tabanlı API'ler.
-// net48 için .NET Core 2.x/3.x API'leri; net5.0 için char.IsAscii* (.NET 7) ve ReplaceLineEndings (.NET 6).
-
-#if !NET7_0_OR_GREATER
+﻿#if !NET7_0_OR_GREATER
 using System.Buffers;
 using System.Text;
 

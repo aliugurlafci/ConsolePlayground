@@ -1,8 +1,4 @@
-﻿// Parallel.ForEachAsync (.NET 6) ve Parallel.ForAsync (.NET 8) karşılıkları.
-// Davranış: en fazla MaxDegreeOfParallelism eşzamanlı gövde, ilk hatada kalan işler iptal edilir,
-// tüm hatalar dönen görevde toplanır; dış belirteç iptal edilirse görev iptal durumuna geçer.
-
-#if !NET8_0_OR_GREATER
+﻿#if !NET8_0_OR_GREATER
 using System.Collections.Concurrent;
 
 namespace System.Threading.Tasks;

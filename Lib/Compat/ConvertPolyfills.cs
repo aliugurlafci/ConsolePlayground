@@ -1,7 +1,4 @@
-﻿// Convert yardımcıları: ToHexStringLower ve span tabanlı FromHexString (.NET 9),
-// ToHexString/FromHexString (.NET 5) ve net48 için span tabanlı Base64 dönüşümleri.
-
-#if !NET9_0_OR_GREATER
+﻿#if !NET9_0_OR_GREATER
 using System.Buffers;
 
 namespace System;
